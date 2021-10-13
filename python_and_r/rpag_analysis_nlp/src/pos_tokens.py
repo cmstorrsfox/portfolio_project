@@ -35,5 +35,3 @@ def tokenize_and_pos_tag(comment):
   return stopwords_gone
 
 comments_18_21["tokens"] = comments_18_21["comment"].apply(tokenize_and_pos_tag)
-
-print(comments_18_21["tokens"])
