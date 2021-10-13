@@ -1,4 +1,4 @@
-from src.pos_tokens import comments_18_21
+from pos_tokens import comments_18_21
 from sklearn.feature_extraction.text import CountVectorizer
 
 
