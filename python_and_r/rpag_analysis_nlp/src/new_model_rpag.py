@@ -10,7 +10,7 @@ similar = new_model.wv.most_similar("improve")
 
 doesnt_match = new_model.wv.doesnt_match(["good", "great", "bad", "excellent"])
 
-similar_by_word = new_model.wv.similar_by_word("english", topn=20)
+similar_by_word = new_model.wv.similar_by_word("tutors", topn=10)
 
 df = pd.DataFrame(similar_by_word, columns=["word", "similarity"])
 
@@ -20,4 +20,8 @@ ax.set_ylim(0.9, 1)
 ax.set_xticklabels(labels=df["word"], rotation=30, ha="right")
 ax.set_title("Similarity Scores for 'English'")
 
-plt.show()
+#plt.show()
+
+most_common_words = new_model.wv.index2word[-10:]
+
+print(most_common_words)

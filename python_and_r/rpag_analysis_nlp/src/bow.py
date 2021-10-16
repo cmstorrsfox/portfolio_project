@@ -1,4 +1,4 @@
-from pos_tokens import comments_18_21
+from src.pos_tokens import comments_18_21
 from sklearn.feature_extraction.text import CountVectorizer
 
 
@@ -14,7 +14,7 @@ def rejoin_tokens(row):
 comments_18_21["cleaned"] = comments_18_21["tokens"].apply(rejoin_tokens)
 
 #vectorize the words
-bow_vectorizer = CountVectorizer()
+bow_vectorizer = CountVectorizer(ngram_range=(1,3))
 
 #group comments by color
 greens = comments_18_21["cleaned"][comments_18_21["rating"]=="Green"].tolist()
@@ -35,7 +35,7 @@ unclassified_rpag = "John should try much harder in his next assignment. The wor
 #create vectors
 comments_vectors = bow_vectorizer.fit_transform(all_comments)
 
-
+print(bow_vectorizer.vocabulary_)
 
 
 
