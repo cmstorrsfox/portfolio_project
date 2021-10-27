@@ -220,7 +220,7 @@ class Compare_Countries():
   Use this class to compare countries of your choosing (recommended limit to 4 for useful visualisations)
   """
 
-  def __init__(self, *countries):
+  def __init__(self, countries):
     self.countries = countries
   
   def get_countries_data(self):

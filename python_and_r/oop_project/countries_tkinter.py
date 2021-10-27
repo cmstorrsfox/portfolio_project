@@ -26,7 +26,7 @@ def show_charts():
   selected = [country_listbox.get(i) for i in idx]
   
 
-  #data = Compare_Countries(selected).compare_population_over_time()
+  data = Compare_Countries(selected).compare_population_over_time()
 
   
 
