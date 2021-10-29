@@ -214,6 +214,7 @@ class Country():
     ax.get_yaxis().set_major_formatter(mpl.ticker.StrMethodFormatter('{x:,.0f}'))
     ax.set_title(f"Population by Age Group: {self.name} - 1960 - 2020")
     ax.set_xticks(x_ticks)
+    ax.set_xticklabels(labels=x_ticks, rotation=90)
 
     plt.legend()
     plt.show()
