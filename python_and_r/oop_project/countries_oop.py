@@ -6,6 +6,8 @@ import matplotlib as mpl
 import seaborn as sns
 from sklearn.linear_model import LinearRegression
 
+
+
 #import and clean dataset
 pd.options.display.float_format = '{:,.2f}'.format
 countries_data = pd.read_csv("raw_data/HISTPOP_21102021122126731.csv")
@@ -82,7 +84,7 @@ class Country():
 
       
     #create the fig and axis   
-    fig, ax, = plt.subplots(figsize=(16,10))
+    fig, ax, = plt.subplots(figsize=(14,8))
     x_ticks = range(min(data.Year.unique()), max(data.Year.unique()+1), year_step)
     ax.ticklabel_format(style="plain", axis="y")
     ax.set_xlim(min(data.Year.unique()), max(data.Year.unique()))
@@ -110,6 +112,9 @@ class Country():
       
       ax.set_title(f'{self.name} Population over time by sex: {min(data.Year.values)} - {max(data.Year.values)}')
       ax.legend(bbox_to_anchor=(1,1))
+
+    plt.tight_layout()
+    return fig
 
 
     
@@ -175,7 +180,7 @@ class Country():
     
     
     melt = pd.melt(df, id_vars='year', var_name='real/pred', value_name='population')
-    fig, ax = plt.subplots(figsize=(10,6))
+    fig, ax = plt.subplots(figsize=(14,8))
     sns.lineplot(data=melt, x='year', y='population', style='real/pred', ax=ax, linewidth=2, alpha=0.4)
     sns.lineplot(data=future_df, x='year', y='predicted population', linestyle='dashed', label='future prediction', linewidth=2, alpha=0.4)
     ax.set_title(f'Population and Predicted Growth in {self.name} 2005 - {max_year}')
@@ -183,7 +188,9 @@ class Country():
     ax.get_yaxis().set_major_formatter(mpl.ticker.StrMethodFormatter('{x:,.0f}'))
     ax.legend(title='')
     ax.axvline(x=2020, color='black', linestyle='dotted')
-    plt.show()
+    
+    plt.tight_layout()
+    return fig
 
   def line_growth(self, years=''):
     data = self.country_pop_profile()
@@ -206,7 +213,7 @@ class Country():
     zero_to_thirty = totals[totals['Age'].isin(age_order[:5])].groupby(by="Year").sum()
     thirty_to_sixty = totals[totals['Age'].isin(age_order[6:11])].groupby(by="Year").sum()
     sixty_plus = totals[totals['Age'].isin(age_order[11:])].groupby(by="Year").sum()
-    fig, ax = plt.subplots(figsize=(16, 10))
+    fig, ax = plt.subplots(figsize=(14, 8))
     x_ticks = range(min(data.Year.unique()), max(data.Year.unique()+1), year_step)
     sns.lineplot(data=zero_to_thirty, x='Year', y='Population', ci=None, label='Under 30')
     sns.lineplot(data=thirty_to_sixty, x='Year', y='Population', ci=None, label='30 - 59')
@@ -217,7 +224,9 @@ class Country():
     ax.set_xticklabels(labels=x_ticks, rotation=90)
 
     plt.legend()
-    plt.show()
+    plt.tight_layout()
+    return fig
+
     
 
 #create comparison class
@@ -243,7 +252,7 @@ class Compare_Countries():
     countries_data = self.get_countries_data()
 
     totals = countries_data[(countries_data["Sex"] == "Total") & (countries_data["Age"] == "Total")]
-    fig, axs = plt.subplots(2,1, figsize=(12,10))
+    fig, axs = plt.subplots(2,1, figsize=(14,8))
     fig.suptitle("Population Comparison over time 1960 - 2020", fontproperties={"weight":"bold", "size": "x-large", "family": "sans-serif"})
   
 
@@ -263,12 +272,12 @@ class Compare_Countries():
     
 
     plt.tight_layout()
-    plt.show()
+    return fig
 
   def compare_population_by_year(self, year):
     countries_data = self.get_countries_data()
     
-    fig, axs = plt.subplots(1,2,figsize=(16,10), sharey=True)
+    fig, axs = plt.subplots(1,2,figsize=(14,8), sharey=True)
     fig.suptitle("Population Comparison for {}\n{}".format(year, " vs. ".join([name for name in countries_data.Country.unique()])), fontproperties={"weight":"bold", "size": "large", "family": "sans-serif"})
     year_data = countries_data[(countries_data["Year"] == year)].reset_index(drop=True)
     
@@ -309,7 +318,7 @@ class Compare_Countries():
       ax.get_yaxis().set_major_formatter(mpl.ticker.StrMethodFormatter('{x:,.0f}'))
     
     plt.tight_layout()
-    plt.show()
+    return fig
 
 if __name__ == "__main__":
   Compare_Countries("France", "Spain").compare_population_over_time()
