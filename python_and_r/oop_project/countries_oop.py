@@ -76,16 +76,10 @@ class Country():
     data = self.country_pop_profile()
 
     
-    #check for years argument and set if not present
-    if years:
-      if len(years) != 3:
-        year_step = 5
-      else:
-        year_step = years[2]
-      data = data[data['Year'].isin([year for year in range(years[0], years[1]+1)])]
-    else:
-      year_step = 5
-      years = (min(data.Year.values), max(data.Year.values))
+
+    year_step = years[2]
+    data = data[data['Year'].isin([year for year in range(years[0], years[1]+1)])]
+
       
     #create the fig and axis   
     fig, ax, = plt.subplots(figsize=(16,10))
@@ -191,23 +185,35 @@ class Country():
     ax.axvline(x=2020, color='black', linestyle='dotted')
     plt.show()
 
-  def line_growth(self):
+  def line_growth(self, years=''):
     data = self.country_pop_profile()
+
+    if years:
+      if len(years) != 3:
+        year_step = 5
+      else:
+        year_step = years[2]
+      
+      data = data[data['Year'].isin([year for year in range(years[0], years[1]+1)])]
+    else:
+      year_step = 5
+      years = (min(data.Year.values), max(data.Year.values))
 
     age_order = data.Age.unique().tolist()
     age_order.insert(1, age_order.pop(9))
 
     totals = data[(data.Sex == 'Total') & (data.Age != 'Total')]
-    zero_to_thirty = totals[totals['Age'].isin(age_order[:5])]
-    thirty_to_sixty = totals[totals['Age'].isin(age_order[6:11])]
-    sixty_plus = totals[totals['Age'].isin(age_order[11:])]
-    
+    zero_to_thirty = totals[totals['Age'].isin(age_order[:5])].groupby(by="Year").sum()
+    thirty_to_sixty = totals[totals['Age'].isin(age_order[6:11])].groupby(by="Year").sum()
+    sixty_plus = totals[totals['Age'].isin(age_order[11:])].groupby(by="Year").sum()
     fig, ax = plt.subplots(figsize=(16, 10))
+    x_ticks = range(min(data.Year.unique()), max(data.Year.unique()+1), year_step)
     sns.lineplot(data=zero_to_thirty, x='Year', y='Population', ci=None, label='Under 30')
     sns.lineplot(data=thirty_to_sixty, x='Year', y='Population', ci=None, label='30 - 59')
     sns.lineplot(data=sixty_plus, x='Year', y='Population', ci=None, label='Over 60')
     ax.get_yaxis().set_major_formatter(mpl.ticker.StrMethodFormatter('{x:,.0f}'))
     ax.set_title(f"Population by Age Group: {self.name} - 1960 - 2020")
+    ax.set_xticks(x_ticks)
 
     plt.legend()
     plt.show()
