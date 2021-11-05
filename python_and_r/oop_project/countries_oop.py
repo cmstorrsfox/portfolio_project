@@ -5,12 +5,24 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import seaborn as sns
 from sklearn.linear_model import LinearRegression
+import os
+import sys
 
-
+#pyinstaller config
+if getattr(sys, 'frozen', False):
+  # if you are running in a |PyInstaller| bundle
+  extDataDir = sys._MEIPASS
+  extDataDir  = os.path.join(extDataDir, 'HISTPOP_21102021122126731.csv') 
+  #you should use extDataDir as the path to your file Store_Codes.csv file
+else:
+  # we are running in a normal Python environment
+  extDataDir = os.getcwd()
+  extDataDir = os.path.join(extDataDir, 'HISTPOP_21102021122126731.csv') 
+  #you should use extDataDir as the path to your file Store_Codes.csv file
 
 #import and clean dataset
 pd.options.display.float_format = '{:,.2f}'.format
-countries_data = pd.read_csv("raw_data/HISTPOP_21102021122126731.csv")
+countries_data = pd.read_csv(extDataDir)
 pop_data = countries_data.groupby(by=["Country", "Time", "Sex", "Age"]).sum().reset_index(drop=False)
 pop_data = pop_data[pop_data.Age.str.contains(pat="^\w{1,2} to \w{1,4}$|85 and over|^Total$")]
 Age_labels = pop_data.Age.unique().tolist()
