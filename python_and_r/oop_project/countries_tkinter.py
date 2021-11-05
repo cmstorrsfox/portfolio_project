@@ -13,9 +13,9 @@ root.title("OECD Population Data Overview")
 root.attributes("-fullscreen", True)
 notebook = ttk.Notebook(root)
 notebook.grid(column=0, row=0, sticky=(N,W,E,S))
-one_country_frame = ttk.Frame(notebook, padding="3 3 12 12")
+one_country_frame = ttk.Frame(notebook)
 one_country_frame.grid(column=0, row=0, sticky=(N,W,E,S))
-compare_country_frame = ttk.Frame(notebook, padding="3 3 12 12")
+compare_country_frame = ttk.Frame(notebook)
 compare_country_frame.grid(column=0, row=0, sticky=(N,W,E,S))
 
 
@@ -99,8 +99,6 @@ def toggle_combobox(event):
 
 
 
-
-
 #create input components for compare countries frame
 ttk.Label(compare_country_frame, text="Select the output from the options below:").grid(column=0, row=0, columnspan=2, sticky=(E,W), pady=8)
 compare_country_combobox = ttk.Combobox(compare_country_frame, values=["Compare populations over time", "Compare populations by year"], textvariable=compare_func, state="readonly")
@@ -125,19 +123,18 @@ as_line_check.grid(column=1, row=2, sticky=W, padx=4)
 
 min_year_label = ttk.Label(one_country_frame, text="Min Year").grid(column=0, row=3, sticky=W, padx=4)
 min_year_selector = ttk.Spinbox(one_country_frame, from_=1960, to=2020, textvariable=min_year)
-min_year_selector.grid(column=1, row=3, sticky=W, padx=4)
+min_year_selector.grid(column=1, row=3, sticky=W, padx=4, pady=8)
 max_year_label = ttk.Label(one_country_frame, text="Max Year").grid(column=0, row=4, sticky=W, padx=4)
 max_year_selector = ttk.Spinbox(one_country_frame, from_=1960, to=2020, textvariable=max_year)
-max_year_selector.grid(column=1, row=4, sticky=W, padx=4)
+max_year_selector.grid(column=1, row=4, sticky=W, padx=4, pady=8)
 step_year_label = ttk.Label(one_country_frame, text="X Axis Step").grid(column=0, row=5, sticky=W, padx=4)
 step_selector = ttk.Spinbox(one_country_frame, from_=1, to=60, textvariable=year_step)
-step_selector.grid(column=1, row=5, sticky=W, padx=4)
+step_selector.grid(column=1, row=5, sticky=W, padx=4, pady=8)
 
 ttk.Label(one_country_frame, text="Choose one country from the list below:")
 country_listbox_2 = Listbox(one_country_frame, height=10, selectmode="browse", selectbackground="lightgreen")
 country_listbox_2.grid(column=0, row=6, columnspan=2, sticky=(E,W), pady=8)
 ttk.Button(one_country_frame, text="Show Country Charts", command=show_country_charts).grid(column=0, row=7, columnspan=2, sticky=(W,E),pady=8)
-
 
 for i, country in enumerate(list_of_countries):
   country_listbox.insert(i, country)
