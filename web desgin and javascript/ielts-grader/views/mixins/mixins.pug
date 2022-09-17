@@ -1,0 +1,33 @@
+//section header
+mixin section-header(header, id)
+  div(class="jumbotron jumbotron-fluid")
+    h1(class="section-header" id= id).section-header= header
+
+
+//card container
+mixin card(title, mainText, src, alt, cardId, button, href) 
+  div(id= cardId class="card")
+    img(src= src alt= alt width="128px" height="auto")
+    div(class="card-body")
+      h4(class="card-title").card-container= title
+      p(class="card-text").card-container= mainText
+      if(button)
+        a(class="btn" target="_blank" href= href)= button
+
+//teacher-profile
+mixin teacherProfile(id, name, src, alt, bio)
+  div(class="profile")
+    h2(class="name")= name
+    div(class="row" id= id)
+      div(class="col-12 col-md-4")
+        img(class="teacher-img" src= src alt= alt)
+      div(class="col-12 col-md-8") 
+        p(class="teacher-bio")= bio
+    hr
+
+//welcome-jumbo-content
+mixin jumbo-content(header, body, btn, href)
+  div(class="slide-content")
+    h1(class="jumbo-header")= header
+    p(class="jumbo-body lead")= body
+    a(class="btn jumbo-btn btn-lg" href= href)= btn

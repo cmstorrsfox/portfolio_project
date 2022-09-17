@@ -1,0 +1,139 @@
+---
+title: "UK House Prices vs Salaries: 1997 - 2020"
+subtitle: "Data Taken from ONS"
+output: html_notebook
+---
+
+Import relevant libraries to analyse the data 
+
+```{r}
+library("tidyverse")
+library("readxl")
+library("lubridate")
+library("patchwork")
+library("caret")
+```
+import the dataset from Excel for EDA
+```{r}
+house_prices <- read_excel("income_vs_houseprice.xlsx", sheet="1a")
+
+incomes <- read_excel("income_vs_houseprice.xlsx", sheet="1b")
+
+ratios <- read_excel("income_vs_houseprice.xlsx", sheet="1c")
+
+```
+
+Clean House Prices dataset
+```{r}
+house_prices <- drop_na(house_prices)
+
+house_prices %>%
+  rename("Region" = Name)
+  
+new_names <- c()
+old_names <- colnames(house_prices)[3:ncol(house_prices)]
+
+for(i in 1:length(old_names)) {
+  new_names[i] <- str_sub(old_names[i], -4, -1)
+}
+
+
+house_prices <- house_prices %>%
+  rename_with(~ new_names, old_names)
+
+house_prices
+
+```
+
+Clean Incomes dataset
+```{r}
+incomes
+```
+Clean ratios dataset
+```{r}
+ratios <- drop_na(ratios)
+
+ratios
+```
+
+Reshape the datasets into long form data
+```{r}
+#reshaping house prices
+house_prices_melt <- house_prices %>%
+  gather("Year", "Median_Price", "1997":"2020") %>%
+  rename("Region" = Name) %>%
+  mutate(Year = as.Date(Year, "%Y"))
+
+#reshaping incomes
+incomes_melt <- incomes %>%
+  gather("Year", "Median_Salary", "1997": "2020") %>%
+  rename("Region" = Name) %>%
+  mutate(Year = as.Date(Year, "%Y"))
+
+#reshaping ratios
+ratios_melt <- ratios %>%
+  gather("Year", "Ratio", "1997": "2020") %>%
+  rename("Region" = Name) %>%
+  mutate(Year = as.Date(Year, "%Y"))
+
+incomes_melt
+```
+combine data into one dataset
+```{r}
+all_data <- merge(incomes_melt, ratios_melt, by=c("Code", "Region", "Year"))
+
+all_data <- merge(all_data, house_prices_melt, by=c("Code", "Region", "Year")) %>%
+  rename("Median_House_Price" = "Median_Price")
+  
+all_data <- all_data[, c("Code", "Region", "Year", "Median_House_Price", "Median_Salary", "Ratio")] 
+
+```
+
+
+Plot data for better analysis using ggplot
+```{r}
+p1 <- ggplot() +
+        geom_line(data=all_data, aes(x=Year, y=Median_Salary, colour=Region)) +
+        scale_y_continuous(name="GBP (£)", labels=scales::comma) +
+        theme(legend.position = "none") + 
+        theme_bw()
+
+p2 <- ggplot() +
+        geom_line(data=all_data, aes(x=Year, y=Median_House_Price, colour=Region)) +
+        scale_y_continuous(name="GBP (£)", labels=scales::comma) +
+        theme(legend.position = "none") +
+        theme_bw()
+
+p3 <- ggplot() +
+      geom_line(data=all_data, aes(x=Year, y=Ratio, colour=Region)) + 
+      scale_y_continuous(name="Ratio: Price to Salary")  + 
+      theme_bw()
+
+
+((p1 + p2) / p3) + plot_layout(guides="collect") + plot_annotation(title="House Price and Salary Changes over time (including ratio) by Region")
+```
+plot increase by year by region
+
+```{r}
+
+p <- ggplot() +
+     geom_point(data=all_data, aes(x=Year, y=Median_House_Price, size=Median_Salary, colour=Region), alpha=0.4) +
+     #scale_color_gradientn(colors = hcl.colors(10, palette = "Blue-Red2")) +
+     scale_y_continuous(name = "Median House Price (£)", labels=scales::comma) +
+     labs(size="Median Salary (£)", colour="Region") +
+     theme_bw() +
+     theme(axis.text.x = element_text(angle=90, vjust=0.3), legend.box ="horizontal") +
+     ggtitle("Median House Price and Median Salary over time", sub="1997 - 2020 (data supplied by ONS)")
+
+p2 <- ggplot() +
+      geom_col(data=all_data, aes(x=Year, y=Ratio), position="dodge", fill="#00cc66", color="#003300") +
+      facet_wrap(vars(Region)) +
+      ggtitle("Ratio: House Prices vs Salary over time", sub="1997 - 2020 (data supplied by ONS)") +
+      theme(axis.text.x = element_text(angle=90, vjust=0.3, hjust=0.9))
+
+
+p
+
+p2
+```
+

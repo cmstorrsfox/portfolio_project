@@ -1,0 +1,133 @@
+@media (min-width: 768px) {
+  body #logo #branding {
+    text-align: left;
+  }
+  body #logo #branding a {
+    margin: 3rem 0 1rem 0;
+    text-decoration: none;
+    color: black;
+    font-size: 3rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  body #logo #branding a {
+    font-size: calc(1.425rem + 2.1vw);
+  }
+}
+@media (min-width: 768px) {
+  body #logo #branding a span {
+    padding-right: 10px;
+    font-weight: bolder;
+  }
+}
+@media (min-width: 768px) {
+  body #logo #branding a img {
+    width: 150px;
+    height: auto;
+    padding-bottom: 10px;
+  }
+}
+@media (min-width: 768px) {
+  body #logo #slogan {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+    font-size: 1.4rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  body #logo #slogan {
+    font-size: calc(1.265rem + 0.18vw);
+  }
+}
+@media (min-width: 768px) {
+  body main {
+    margin: 0 70px 100px 70px;
+  }
+  body main #welcome-slides {
+    margin: 4rem 0 5rem 0;
+    height: 60%;
+  }
+  body main .expert-entry .profile {
+    margin-bottom: 2rem;
+  }
+  body main .expert-entry .profile h2 {
+    padding-left: 1rem;
+    font-family: "Source Sans Pro", sans-serif;
+    font-variant: small-caps;
+    font-size: 2.5rem;
+    margin: 0 auto;
+    text-align: left;
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  body main .expert-entry .profile h2 {
+    font-size: calc(1.375rem + 1.5vw);
+  }
+}
+@media (min-width: 768px) {
+  body main .expert-entry .profile img {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  body main .expert-entry .profile p {
+    letter-spacing: 1.3px;
+    font-size: 1.2rem;
+    margin: 1rem 2rem 1rem 1rem;
+  }
+}
+@media (min-width: 768px) {
+  body main .price-list {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  body main .price-list {
+    font-size: calc(1.275rem + 0.3vw);
+  }
+}
+@media (min-width: 768px) {
+  body main .price-list li {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  body main .price-list li .row {
+    width: 100%;
+  }
+  body main .price-list li .row .item {
+    color: black;
+    display: flex;
+    justify-content: flex-start;
+    text-align: justify;
+  }
+  body main .price-list li .row .price {
+    color: #a00707;
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+  }
+  body main .price-list li .row .more-info {
+    display: flex;
+    justify-content: start;
+    flex-wrap: nowrap;
+    padding-top: 10px;
+    font-style: italic;
+    text-align: justify;
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  body main .price-list li .row .more-info {
+    font-size: calc(1.255rem + 0.06vw);
+  }
+}
+
+/*# sourceMappingURL=media-queries.css.map */

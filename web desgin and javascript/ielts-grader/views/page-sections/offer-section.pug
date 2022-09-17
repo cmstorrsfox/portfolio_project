@@ -1,0 +1,9 @@
+include ../mixins/mixins.pug
+
+div(class="jumbotron jumbotron-fluid")
+  +section-header('What We Offer', 'what-we-offer')
+  div(class="container card-container")
+    div(class="card-deck")
+      +card('Mock IELTS Writing Score', 'Send us a sample of your writing and our IELTS experts will send you back a mock score to give you an idea of your level', '../images/pencil.svg', 'a scorecard', 'mock-test-card')
+      +card('In-depth Feedback on Writing and Speaking', 'Get detailed written and verbal feedback on your submitted sample task', '../images/conversation.svg', 'conversation', 'in-depth-feedback-card')
+      +card('Expert Online Tutoring and Support', 'Get expert 1-1 or small-group help with your IELTS to get you to the score you need', '../images/headset.svg', 'online 1-1 classes', 'tutoring-card')

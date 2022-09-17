@@ -1,0 +1,8 @@
+include ../mixins/mixins.pug
+
+div(class="jumbotron jumbotron-fluid")
+  +section-header('More Questions?', 'contact-us')
+  div(class="container card-container mb-3")
+    div(class="card-group pb-5")
+      +card('Contact Us', 'Click the button below to send us an email', '../images/at.svg', 'email us', 'contact-card', 'Contact Us', 'mailto:cmstorrsfox@gmail.com?subject=Question About Grade IELTS')
+      +card('Frequently Asked Questions', 'Click the button below to see our FAQs', '../images/qmark.svg', 'FAQs', 'faq-card', 'FAQs', '/faqs')

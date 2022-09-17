@@ -1,0 +1,43 @@
+extends template.pug
+
+block content  
+  div(class="container my-4")
+    form(id="task-submit-form" action="/submissions" method="post")
+      div(class="row") 
+        p Step 1 - Enter your contact details below:
+      div(class="form-row")
+        div(class="col-12 col-md-4 my-2")
+          input(type="text" name="firstName" class="form-control" placeholder="First Name" required)
+        div(class="col-12 col-md-4 my-2")
+          input(type="text" name="lastName" class="form-control" placeholder="Last Name" required)
+        div(class="col-12 col-md-4 my-2")
+          input(type="email" name="email" class="form-control" placeholder="Email" required)
+          input(id="datetime" type="hidden" name="datetime" class="form-control" value="")
+      div(class="row")
+        p Step 2 - Select your Task Type
+      div(class="form-row")
+        div(class="col")
+          select(name="taskType" id="task-type-selector" class="form-control" onchange="renderTaskType()" required)
+            option(value="" default)
+            option(value="writing") Writing
+            option(value="speaking") Speaking
+      div(class="row")
+        p(id="step-3")
+      div(class="form-row" id="writing-task-div")
+        div(class="col-12 text-center")
+          small(id="device-warning" class="text-danger") Attention: We recommend that you do the writing task on a computer rather than a mobile device.
+        div(class="col-12")
+          iframe(id="task-1-doc" src="/ielts-tasks/writing/writing_task_1_sample_1.pdf" width="100%" height="600px")
+        div(class="col-12")
+          label(for="writing-part-1") Write your Part 1 answer here:
+          textarea(name="writingTaskOne" class="form-control" id="writing-part-1" rows="10")
+        div(class="col-12")
+          iframe(id="task-2-doc" src="/ielts-tasks/writing/writing_task_2_sample_1.pdf" width="100%" height="600px")
+        div(class="col-12")
+          label(for="writing-part-2") Write your Part 2 answer here:
+          textarea(name="writingTaskTwo" class="form-control" id="writing-part-2" rows="10")
+        div(class="col-12")
+          button(id="writing-submit" type="submit" class="submit-btn btn btn-lg btn-block" form="task-submit-form") Submit
+      div(class="form-row" id="speaking-task-div")
+        div(class="col-12")
+          button(id="speaking-submit" type="submit" form="task-submit-form" class="submit-btn btn btn-lg btn-block") Contact us

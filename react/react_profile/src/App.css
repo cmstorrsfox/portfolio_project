@@ -1,0 +1,28 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(208, 255, 239);
+}
+
+.App {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.title {
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+@media only screen and (max-width: 540px) {
+  .App {
+    overflow-y: auto;
+    flex-wrap: nowrap;
+  }
+}

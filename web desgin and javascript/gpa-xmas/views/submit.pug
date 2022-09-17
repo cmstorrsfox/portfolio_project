@@ -1,0 +1,44 @@
+extends template.pug
+
+block content 
+  div(class="submit-container")
+    form(id="submission" method="post" action="/submit")
+      div(class="form-container" id="one")
+        label(for="title") Title: 
+        input(type="text" name="title" id="title" placeholder="enter your post title here" pattern="[^']+" required)
+        label(for="content") Post content:
+        input(type="text" pattern="[^']+" name="content" id="content" placeholder="enter your content here" required)
+        label(for="name") Name:
+        input(type="text" pattern="[^']+" name="name" id="name" placeholder="enter your name here" required)
+      div(class="form-container" id="two")
+        label(for="background_img") Choose a background image:
+        select(name="background_img" id="background_img" required)
+          option(value="") Select a background
+          option(value="./background-images/candy-canes.jpg") Candy Canes
+          option(value="./background-images/berries-cones.jpg") Berries & Cones
+          option(value="./background-images/gifts.jpg") Gifts
+          option(value="./background-images/joy.jpg") Joy
+          option(value="./background-images/mince-pies.jpg") Mince Pies
+          option(value="./background-images/white-presents.jpg") White Presents
+        label(for="font") Font
+        select(name="font" id="font" required)
+          option(value="") Select a font
+          option(value="Berkshire Swash") Berkshire Swash
+          option(value="Emilys Candy") Emily's Candy
+          option(value="Dancing Script") Dancing Script
+          option(value="Fontdiner Swanky") Fontdiner Swanky
+      div(class="form-container" id="three")
+        label(for="red") Red
+        input(type="range" min="0" max="255" name="red" value="0" id="red")
+        label(for="green") Green
+        input(type="range" min="0" max="255" name="green" value="0" id="green")
+        label(for="blue") Blue
+        input(type="range" min="0" max="255" name="blue" value="0" id="blue")
+      div(class="form-container" id="four")      
+        button(type="submit" id="submit-btn") POST
+  
+    div(class="preview" id="post-preview")
+      div(class="text-container")
+        h1(class="title" id="title-preview")
+        p(class="content" id="content-preview")
+        p(class="name" id="name-preview")

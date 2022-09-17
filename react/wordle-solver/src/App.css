@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-family: 'Lato', sans-serif;
+}
+
+.App > * {
+  margin-top: 0.8rem;
+}
+
+.title {
+  background-color: black;
+  color: white;
+  width: 100vw;
+}
+
+.caption {
+  border: 1px solid black;
+  padding: 2rem;
+  border-radius: 4px;
+}
+
+#form-container {
+  width: 75%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+fieldset {
+  margin-top: 2rem;
+  height: 100px;
+  font-weight: 800;
+}
+
+legend {
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+}
+
+input {
+  text-align: center;
+  height: 80%;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.green-input, .yellow-input {
+  margin-right: 1rem;
+  width: 12.5%;
+  height: 75%;
+}
+
+
+#incorrect-letters {
+  width: 75%;
+}
+
+#incorrect-letters::placeholder {
+  font-size: 0.8rem;
+}
+
+#remaining-word-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.remaining-word {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 0.4rem;
+  margin: 0.4rem;
+  text-align: center;
+  background-color: #c9b458
+}
+
+.final-word {
+  background-color: #6aaa64;
+}
+
+@media only screen and (max-width: 480px) {
+  .green-input, .yellow-input {
+    width: 8%;
+    margin-right: 0.5rem;
+  }
+
+  fieldset {
+    padding: 0;
+  }
+
+  input {
+    font-size: 1.5rem;
+  }
+
+}

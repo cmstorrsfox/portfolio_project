@@ -1,0 +1,301 @@
+//bootstrap sass components
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "./helpers/variables";
+@import "./helpers/placeholders";
+
+//included to prevent navbar overlapping content
+
+html {
+  scroll-padding-top: 100px;
+}
+
+//mostly nav and elements related to the branding / logo
+
+body {
+  margin-bottom: 50px !important;
+  #logo {
+    font-family: $logo-font;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    #branding {
+      text-align: center;
+      font-variant: small-caps;
+      a {
+        margin: 3rem 0 1rem 0;
+        text-decoration: none;
+        color: black;
+        @include font-size(5rem);
+        span {
+          padding-right: 10px;
+          font-weight: bolder;
+        }
+        img {
+          width: 120px;
+          height: auto;
+          padding-bottom: 10px;
+        }
+      }
+    }
+
+    #slogan {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      @include font-size(1.4rem);
+      font-family: $main-font;
+      font-weight: 500;
+    }
+  }
+  .navbar {
+    background-color: $base-darkest-blue;
+    @include font-size(1.2rem);
+    margin-bottom: 2rem;
+    a {
+      font-weight: 600;
+      color: white;
+    }
+    .btn {
+      background-color: $base-red;
+      color: $base-yellow;
+    }
+    .dropdown-item {
+      color: $base-red;
+    }
+  }
+
+//beginning of main styling
+
+  main {
+    font-family: $main-font;
+    font-weight: 400;
+    .jumbotron {
+      @extend %section-jumbo;
+      .section-header {
+        @extend %section-header;
+      }
+    }
+    .btn {
+      background-color: $base-red;
+      color: $base-yellow;
+      font-weight: 500;
+      margin: 0.8rem;
+    }
+    #welcome-slides {
+      margin: 3rem 0 3rem 0;
+      height: 50%;
+      .carousel-inner {
+        height: 100%;
+        .carousel-item {
+          text-align: center;
+          padding: 1rem;
+          height: 100%;
+          padding: 0 15% 0 15%;
+          .slide-content {
+            position: relative;
+            width: 100%;
+            margin: 13% auto;
+            .jumbo-header {
+              @include font-size(3rem);
+            }
+            .jumbo-body {
+              @include font-size(1.4rem);
+            }
+          }      
+        }
+        #carousel-1 {
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url(../images/carousel/study_book.jpg);
+            background-position: center;
+            background-size: cover;
+            filter: grayscale(80%);
+            opacity: 0.3;    
+          }
+        }
+        #carousel-2 {
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url(../images/carousel/business_signing.jpg);
+            background-position: center;
+            background-size: cover;
+            filter: grayscale(80%);
+            opacity: 0.3;    
+          }
+          .slide-content {
+            position: relative;
+            width: 100%;
+            margin: 12.5% auto;
+          }          
+        }
+        #carousel-3 {
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url(../images/carousel/online_study.jpg);
+            background-position: center;
+            background-size: cover;
+            filter: grayscale(80%);
+            opacity: 0.3;    
+          }
+          .slide-content {
+            position: relative;
+            width: 100%;
+            margin: 12.5% auto;
+          }      
+        }
+      }
+    }
+    .card {
+      @extend %card;
+    }
+
+    .price-list {
+      @include font-size(1.5rem);
+      font-weight: 700;
+      li {
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 2rem 1.2rem;
+        .row {
+          width: 100%;
+          .item {
+            color: black;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+          }
+          .price {
+            color: $base-red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          }
+          .more-info {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            flex-wrap: wrap-reverse;
+            padding-top: 10px;
+            font-style: italic;
+            @include font-size(1.3rem);
+          }
+        }
+      }
+
+    }
+
+    #task-submit-form {
+      font-weight: bold;
+      @include font-size(1.2rem);
+      input {
+        &::placeholder {
+          text-align: start;
+        }
+      }
+
+      textarea {
+        margin: 2rem 0;
+      }
+
+      .row {
+        display: flex;
+        justify-content: center;
+        padding: 0 1rem;
+      }
+
+      p {
+        text-align: center;
+        margin-top: 2rem;
+      }
+
+      label {
+        margin-top: 2rem;
+      }
+
+      #writing-task-div, #speaking-task-div, #step-3 {
+        display: none;
+      }
+      .submit-btn {
+        margin: 0 auto 4rem auto;
+      }
+    }
+
+    .expert-entry {
+      width: 100%;
+      .profile {
+        div {
+          width: 100%;
+        }
+        h2 {
+          padding-left: 1rem;
+          font-family: $logo-font;
+          font-variant: small-caps;
+          @include font-size(2.5rem);
+          margin: 0 auto;
+          text-align: center;
+        }
+        img {
+          width: 100%;
+          height: auto;
+          margin: 0.5rem 0.5rem 0.5rem 1rem;
+        }
+        p {
+          text-align: justify;
+          margin: 1rem 2rem 1rem 3rem;
+        }
+        hr {
+          width: 80%;
+          margin-top: 3rem;
+        }
+      }
+    }
+
+    .submission-info {
+      h4 {
+        color: dark;
+      }
+    }
+  } 
+}
+
+footer {
+  #footer {
+    margin-bottom: 0 !important;
+    font-family: $logo-font;
+    font-variant: small-caps;
+    color: white;
+    height: 50px;
+    span {
+      padding-right: 0.5rem;
+    }
+    img {
+      padding-bottom: 4px;
+    }
+  }
+}
+
+#submissionForm {
+  width: 87.5%;
+}
+
+
+

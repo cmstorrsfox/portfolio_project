@@ -1,0 +1,15 @@
+extends template.pug
+
+block content
+  h1(class="intro") Happy Christmas!
+  a(href="/submit" class="button") Click here to post a card
+  div(class="container")
+    each val, key in submissions
+      div(id=key class="post" style=`background-image: url('${submissions[key].background_img}'); font-family: '${submissions[key].font}'; color: rgb(${submissions[key].red}, ${submissions[key].green}, ${submissions[key].blue})`)
+        div(class="text-container")
+          h2(class="title") #{submissions[key].title}
+          p(class="content") #{submissions[key].content}
+          p(class="name") #{submissions[key].name}
+
+
+    

@@ -1,0 +1,50 @@
+.profile-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0.5rem auto;
+  padding: 1rem;
+  width: 33%;
+  height: 250px;
+  overflow-y: hidden;
+  border: 1px solid black;
+  border-radius: 1em;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  box-shadow: 1px 1px 8px #000000;
+  text-align: center;
+  font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+}
+
+.profile-pic {
+  margin-right: 0.4rem;
+  width: 200px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+}
+
+.female {
+  background: linear-gradient(#12b8ebe8, #ff69b475);
+}
+
+.male {
+  background: linear-gradient(#12b8ebe8, #ffad6975);
+}
+
+@media only screen and (max-width: 540px) {
+  .profile-card {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    height: auto;
+  }
+}

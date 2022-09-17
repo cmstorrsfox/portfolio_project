@@ -1,0 +1,54 @@
+extends template.pug
+
+
+block content
+  div(class="container my-4")
+    h1(class="welcome text-center") Welcome to the admin section
+    div(id="submissions-table" class="container")
+    h3(class="submissions my-2 text-center") Submissions
+
+    each val, key in submissions
+      div(class="container")
+        form(id= "submission-" + val.id method="post" class="my-3 border border-warning p-3" action=`/submissions/${val.id}?_method=PUT`)
+          div(class="form-row")
+            div(class="col-12 col-md-4 font-weight-bold mb-4 text-dark d-flex justify-content-md-start")= "Status: "
+              if(val.emailed !==1)
+                span(class="text-danger text-uppercase ml-1") pending
+              else 
+                span(class="text-success text-uppercase ml-1") completed
+            div(class="col-12 col-md-4" class="font-weight-bold mb-4 text-dark d-flex justify-content-md-center")= 'Submission Time: '
+              span 
+                input(readonly class="form-control-plaintext text-primary ml-1 p-0 font-weight-bolder" name="datetime" value= val.datetime)             
+            div(class="col-12 col-md-4" class="font-weight-bold mb-4 text-dark d-flex justify-content-md-end")= 'Submission ID: '
+              span(class="text-primary ml-1")= val.id
+            div(class="form-group col-12 col-md-3")
+              label(for="first_name" class="font-weight-bold") First Name:
+              input(type="text" readonly class="form-control-plaintext" id="first_name" name="firstName" value= val.first_name)
+            div(class="form-group col-12 col-md-3")
+              label(for="last_name" class="font-weight-bold") Last Name:
+              input(type="text" readonly class="form-control-plaintext" id="last_name" name="lastName" value= val.last_name)
+            div(class="form-group col-12 col-md-3")
+              label(for="email" class="font-weight-bold") Email:
+              input(type="email" readonly class="form-control-plaintext" id="email" name="email" value= val.email)
+            div(class="form-group col-12 col-md-3")
+              label(for="task-type" class="font-weight-bold") Task Type:
+              input(type="text" readonly class="form-control-plaintext" id="task-type" name="taskType" value= val.type)
+          div(class="form-group")
+            label(for="writing_task_1" class="font-weight-bold") Writing Task 1 Response:
+            input(type="textarea" readonly class="form-control-plaintext" id="writing_task_1" name="writingTaskOne" value= val.writing_task_1)
+          div(class="form-group")
+            label(for="writing_task_2" class="font-weight-bold") Writing Task 2 Response:
+            input(type="textarea" readonly class="form-control-plaintext" id="writing_task_2" name="writingTaskTwo" value= val.writing_task_2)
+          div(class="form-group")
+            if val.emailed === 1
+              label(for="emailed-select" + val.id) Emailed:
+              select(type="text" class="form-control" id="emailed-select" + val.id name="emailed")
+                option(value=1 selected) Yes
+                option(value=0) No
+            else 
+              label(for="emailed-select" + val.id) Emailed:
+              select(type="text" class="form-control" id="emailed-select" + val.id name="emailed")
+                option(value=1) Yes
+                option(value=0 selected) No
+
+          button(type="submit" class="btn mb-3" form="submission-" + val.id) Update

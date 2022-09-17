@@ -1,0 +1,19 @@
+/*@media only screen and (max-width: 576px) {
+  .logo-body {
+    width: 500px;
+  }
+
+  .logo-letter {
+    width: 72.5px;
+  }
+
+  #dial-1 {
+    top: 0px;
+    left: 64px;
+  }
+  
+  #dial-2 {
+    top: 82px;
+    left: 230px;
+  }
+}

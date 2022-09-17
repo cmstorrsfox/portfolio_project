@@ -1,0 +1,153 @@
+body {
+  background-image: url("../background-images/main.jpg");
+  background-size: cover;
+  padding-bottom: 30px;
+  display: grid;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+}
+body .intro {
+  text-align: center;
+  font-family: "Mountains of Christmas", cursive;
+  color: green;
+  text-shadow: 1px 1px red;
+  font-size: calc(1.625rem + 4.5vw);
+  font-weight: bold;
+  margin: 1rem 0;
+}
+@media (min-width: 1200px) {
+  body .intro {
+    font-size: 5rem;
+  }
+}
+body .button {
+  width: 15%;
+  margin: 0 auto 20px auto;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: "Mountains of Christmas", cursive;
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.288);
+  border-radius: 9px;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+}
+body .container {
+  margin: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(475px, 1fr));
+  grid-template-rows: repeat(3, minmax(475px, 1fr));
+  grid-auto-rows: minmax(475px, 1fr);
+  grid-auto-flow: row;
+  grid-column-gap: 12px;
+  grid-row-gap: 8px;
+}
+body .container .post {
+  position: relative;
+  padding: 0.5rem;
+  border: 1px solid white;
+  border-radius: 4px;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  word-wrap: break-word;
+}
+body .container .post::before {
+  content: "";
+  background-color: white;
+  filter: opacity(0.5);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+body .container .post .text-container {
+  position: relative;
+  font-size: calc(1.325rem + 0.9vw);
+}
+@media (min-width: 1200px) {
+  body .container .post .text-container {
+    font-size: 2rem;
+  }
+}
+body .preview {
+  position: relative;
+  width: 500px;
+  height: 675px;
+  margin: 2rem auto;
+  font-size: calc(1.325rem + 0.9vw);
+  padding: 0.5rem;
+  border: 1px solid black;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (min-width: 1200px) {
+  body .preview {
+    font-size: 2rem;
+  }
+}
+body .preview::before {
+  content: "";
+  background-color: white;
+  filter: opacity(0.5);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+body .preview .text-container {
+  position: relative;
+  word-wrap: break-word;
+}
+body .submit-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+body .submit-container form {
+  font-family: "Roboto", sans-serif;
+  font-size: calc(1.265rem + 0.18vw);
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+}
+@media (min-width: 1200px) {
+  body .submit-container form {
+    font-size: 1.4rem;
+  }
+}
+body .submit-container form > * {
+  margin: 10px;
+}
+body .submit-container form .form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: justify;
+  border-bottom: 1px solid black;
+  margin: 20px 40px;
+}
+body .submit-container form .form-container:last-child {
+  border-bottom: none;
+}
+body .submit-container form .form-container > * {
+  margin-top: 5px;
+}
+body .submit-container form .form-container input, body .submit-container form .form-container select, body .submit-container form .form-container option, body .submit-container form .form-container button, body .submit-container form .form-container label {
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  text-align: justify;
+}
+body .submit-container form .form-container button {
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/*# sourceMappingURL=style.css.map */

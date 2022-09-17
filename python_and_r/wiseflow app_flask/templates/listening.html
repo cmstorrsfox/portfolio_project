@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listening Calculator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  </head>
+  <body>
+    <nav class="menu">
+      <a href="/" class="homepage">WISEFlow Exam Calculator</a>
+      <a href="/listening-calculator" class="calculator">WISEFlow Listening Exam Calculator</a>
+      <img id="sg-logo" src="{{ url_for('static', filename='sg.png') }}">
+    </nav>
+    <header class="header">
+      <article>
+        <h1>WISEflow Listening Score Calculator</h1>
+        <h3>Quickly work out the listening total for WISEFlow exams</h3>
+      </article>
+    </header>
+    <main>
+      <form id="listening-submission-form" method="POST" action="/listening-calculator" enctype="multipart/form-data">
+        <label for="file-name">Enter the file name</label>
+        <input type="text" id="file-name" name="file-name" required>
+        <label for="file-input">Choose the folder that contains the files you wish to import:</label>
+        <input type="file" id="file-input" name="files[]" accept=".csv" multiple required>
+        <input type="submit" class="btn" id="submit-listening" value="Submit">
+      </form>
+    </main>
+  </body>
+</html>

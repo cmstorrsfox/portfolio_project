@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WISEFlow Online CSV Processor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  </head>
+  <body>
+    <nav class="menu">
+      <a href="/" class="homepage">WISEFlow Exam Calculator</a>
+      <a href="/listening-calculator" class="calculator">WISEFlow Listening Exam Calculator</a>
+      <img id="sg-logo" src="{{ url_for('static', filename='sg.png') }}">
+    </nav>
+    <header class="header">
+      <article>
+        <h1>WISEflow CSV Export Processor</h1>
+        <h3>Quickly combine WISEFlow exports into one Excel file</h3>
+      </article>
+    </header>
+    <main>
+      <section id="main-container">
+        <section id="form-section">
+          <article id="form-container">
+            <form id="submission-form" method="POST" action="/" enctype="multipart/form-data">
+              <article class="form-group">
+                <label for="filename">Enter the name you want to give the file:</label>
+                <input type="text" id="filename" name="output_filename" required>
+              </article>
+              <article class=form-group>
+                <label for="import_path">Choose the folder that contains the files you wish to import:</label>
+                <input type="file" id="import_path" name="files[]" accept=".csv" multiple required>         
+              </article>
+              <article class="form-group" id="buttons">
+                <input type="submit" class="btn" id="submit" value="Submit">
+                <input type="reset" class="btn" id="reset" value="Reset">
+              </article>
+            </form> 
+          </article>
+          <article id="file-list-container">
+            <h3 id="file-list-header">Files uploaded:</h3>
+            <ol id="file-list">
+
+            </ol>
+          </article>  
+        </section>
+        <section id="video-section">
+          <article id="video-container">
+            <video width=640px height=480px controls>
+              <source src="{{ url_for('static', filename='video.mp4') }}" type="video/mp4">
+            </video>
+          </article>
+          <article id="ixns">
+            <ol>
+              <li>Download the csv files from WISEFlow for each exam in a set</li>
+              <li>Save the files into a folder with no other files in it</li>
+              <li>Rename the files from 'export' to the name of the exam as follows, adding suffixes with underscore as desired for multiple files of the same exam type (e.g. _am, _pm, _1, _2 etc.) as follows:</li>
+                <ol id=sub-list>
+                  <li>Listening Parts 1&2 --> listening1_2</li>
+                  <li>Listening Part 3 --> listening3</li>
+                  <li>Reading --> reading</li>
+                  <li>Writing --> writing</li>
+                </ol>
+              <li>Enter the name you'd like to give the file</li>
+              <li>Select the folder you're uploading the files from using the 'browse' button</li>
+              <li>Click submit and the newly created Excel file will download to the folder where your browser usually saves downloads</li>
+            </ol>
+          </article>
+        </section>
+      </section>
+    </main>
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

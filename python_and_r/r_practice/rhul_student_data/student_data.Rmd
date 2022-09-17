@@ -1,0 +1,97 @@
+---
+title: "student data"
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  pdf_document: default
+---
+
+### Install dependencies / packages
+```{r}
+library("dplyr")
+library("tidyr")
+library("ggplot2")
+```
+
+### Import csv data and check it
+```{r}
+student_data <- read.csv("all_student_data.csv")
+
+student_data <- student_data %>%
+  select(-Full.Name)
+
+head(student_data,10)
+```
+### rearrange the data into long form
+```{r}
+pivoted_data <- student_data %>%
+  pivot_longer(cols = starts_with("EX") | starts_with("CW"),  names_to = "Assessment", values_to = "Score")
+
+pivoted_data
+
+
+```
+
+
+### plot reading scores scatterplot with ggplot
+```{r}
+reading_viz <- ggplot(data=student_data, aes(x=EX3.Reading, y=CW1)) +
+                      geom_point(aes(color=cohort)) +
+                      geom_smooth(se=TRUE, level=0.95) +
+                      labs(title="Reading Scores by Cohort", subtitle="Data taken from RHUL students 2020/21", x="Reading Exam", y="CW1")
+
+reading_viz
+
+```
+
+### Plot histogram of listening results with ggplot
+``` {r}
+listening_viz <- ggplot(data=student_data, aes(x=EX1.Listening)) +
+                        geom_histogram(aes(fill=programme), alpha=0.5, bins=30) +
+                        labs(title="Listening Results by programme", subtitle="Data from RHUL AES Results 2020/21", x="Listening Exam Score", y="Number of Students")
+
+listening_viz
+```
+
+## Plot boxplot of assessment scores with ggplot
+``` {r}
+assessment_viz <- ggplot(data=pivoted_data, aes(x=Assessment, y=Score)) +
+                         geom_boxplot(aes(fill=Assessment)) +
+                         labs(title="Boxplots of results for assessments", subtitle="Data taken from RHUL 2020/21 AES students", x="Assessment Name", y="Score") +
+                         theme(axis.text.x = element_text(angle=45, hjust=1))
+
+assessment_viz
+
+
+```
+### Return student counts per cohort and programme
+
+``` {r}
+cohort_groups <- student_data %>%
+  group_by(cohort, programme) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(x=cohort, y=count)) +
+         geom_col(aes(fill=programme), position="dodge2") +
+         labs(title="Student Numbers by Cohort and Programme", subtitle="Data taken from RHUL AES Data 2020/21", x="Cohort", y="Number of Students")
+
+cohort_groups
+
+
+
+```
+
+### Return assessment averages by cohort and programme
+``` {r}
+assessment_groups <- pivoted_data %>%
+  group_by(Assessment, cohort) %>%
+  summarize(avg_score = mean(Score)) %>%
+  ggplot(aes(x=Assessment, y=avg_score)) +
+         geom_col(aes(fill=cohort), position="dodge2") +
+         geom_text(aes(label=round(avg_score,1), group=cohort), position=position_dodge(width=0.9), size=3, vjust=-0.5) +
+         labs(title="Average Assessment Score by Cohort", subtitle="Data taken from RHUL AES Results 2020/21", x="Assessment", y="Average Score") +
+         theme(axis.text.x = element_text(angle=45, hjust=1)) +
+         scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+assessment_groups
+  
+```

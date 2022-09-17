@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Overview Tool</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  </head>
+  <body>
+    <nav class="menu">
+      <a href="/" class="homepage">WISEFlow Exam Calculator</a>
+      <a href="/student-overview" class="calculator">WISEFlow Listening Exam Calculator</a>
+      <img id="sg-logo" src="{{ url_for('static', filename='sg.png') }}">
+    </nav>
+    <header class="header">
+      <article>
+        <h1>Student Overview Tool</h1>
+        <h3>Quickly create a detailed overview of your students</h3>
+      </article>
+    </header>
+    <main>
+      <form id="student-overview-submission-form" method="POST" action="/student-overview" enctype="multipart/form-data">
+        <label for="file-input">Choose the folder that contains the files you wish to import:</label>
+        <input type="file" id="file-input" name="files[]" accept=".csv, .xlsx" multiple required>
+        <input type="submit" class="btn" id="submit-student-overview" value="Submit">
+      </form>
+    </main>
+  </body>
+</html>

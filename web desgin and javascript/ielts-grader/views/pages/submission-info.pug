@@ -1,0 +1,29 @@
+extends template.pug
+
+block content
+  div(class="container submission-info")
+    div(class="row my-2")
+      div(class="col-12 d-flex flex-column align-items-center")
+          h4 Thank you for your submission
+          h4 A member of our team will be in touch shortly
+    form(id="submitted-form" class="my-3 border style p-3")
+      div(class="form-row")
+        div(class="form-group col-12 col-md-3")
+          label(for="first_name" class="font-weight-bold") First Name:
+          input(type="text" readonly class="form-control-plaintext" id="first_name" name="firstName" value= submission[0].first_name)
+        div(class="form-group col-12 col-md-3")
+          label(for="last_name" class="font-weight-bold") Last Name:
+          input(type="text" readonly class="form-control-plaintext" id="last_name" name="lastName" value= submission[0].last_name)
+        div(class="form-group col-12 col-md-3")
+          label(for="email" class="font-weight-bold") Email:
+          input(type="email" readonly class="form-control-plaintext" id="email" name="email" value= submission[0].email)
+        div(class="form-group col-12 col-md-3")
+          label(for="task-type" class="font-weight-bold") Task Type:
+          input(type="text" readonly class="form-control-plaintext" id="task-type" name="taskType" value= submission[0].type)
+      if submission[0].type === "writing"
+        div(class="form-group")
+          label(for="writing_task_1" class="font-weight-bold") Writing Task 1 Response:
+          input(type="textarea" readonly class="form-control-plaintext" id="writing_task_1" name="writingTaskOne" value= submission[0].writing_task_1)
+        div(class="form-group")
+          label(for="writing_task_2" class="font-weight-bold") Writing Task 2 Response:
+          input(type="textarea" readonly class="form-control-plaintext" id="writing_task_2" name="writingTaskTwo" value= submission[0].writing_task_2)

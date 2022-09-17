@@ -1,3 +1,17 @@
-/python_and_r/rpag_analysis_nlp/nlp_rpag
+**/build
 
-/python_and_r/oop_project/countries_oop
+**/__pycache__
+
+**/node_modules
+
+**/Include
+
+**/Lib
+
+**/Scripts
+
+*.csv
+*.pdf
+*.docx
+
+*.exe

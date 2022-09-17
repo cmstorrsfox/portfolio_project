@@ -1,0 +1,19 @@
+extends template.pug
+
+block content
+  if !authorised 
+    div(class="container mx-auto my-5")
+      div(class="row d-flex justify-content-center")
+        div(class="col-12 col-md-6")
+          form(id="login" class="border border-dark rounded-top rounded-bottom p-3" method="post")
+            div(class="form-group my-2")
+              label(for="username") Username:
+              input(id="username" type="text" name="username" class="form-control my-2" required)
+              label(for="password") Password:
+              input(id="plainTextPassword" type="password" name="plainTextPassword" class="form-control my-2" required)
+              button(type="submit" form="login" class="btn my-2 mr-2" formaction="/auth") Log in
+              //commented out button for new user
+              //button(type="submit" form="login" class="btn my-2" formaction="/auth/new-user" formtarget="_blank") Create new user
+              small(id="error-message" class="form-text text-danger") #{errorMessage}
+
+

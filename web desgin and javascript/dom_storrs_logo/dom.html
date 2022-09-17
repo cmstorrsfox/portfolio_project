@@ -1,0 +1,194 @@
+<style>
+    html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: sans-serif;
+  }
+
+  .container {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 20px auto;
+  }
+
+  .logo-body {
+    width: calc(62.5rem / 2.09);
+    position: relative;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .logo-letter {
+    width: calc(9.5rem / 2.09);
+    height: calc(9.5rem / 2.09);
+    position: absolute;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  #dial-1 {
+    top: 0px;
+    left: calc(8rem / 2.09);
+    transform: rotate(-120deg);
+  }
+
+  #dial-2 {
+    top: calc(9.875rem / 2.09);
+    left: calc(28.625rem / 2.09);
+  }
+
+  .header-announcement-bar-wrapper {
+    display: none;
+  }
+  
+  @media only screen and (max-width: 576px) {
+	  .logo-body {
+        width: calc(62.5rem / 4.48);
+        position: relative;
+        height: auto;
+        margin: 0 auto;
+      }
+
+      .logo-letter {
+        width: calc(9.5rem / 4.48);
+        height: calc(9.5rem / 4.48);
+        position: absolute;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+
+      #dial-1 {
+        top: 0px;
+        left: calc(8rem / 4.48);
+        transform: rotate(-120deg);
+      }
+
+      #dial-2 {
+        top: calc(9.875rem / 4.48);
+        left: calc(28.625rem / 4.48);
+      }
+  }
+  
+
+
+</style>
+
+<div id="logo-container" class="container">
+  <div class="logo-body" id="logo-main">
+    <img src="./logo-parts/dom storrs_logos/Dom Storrs_Volume controller logo_no o's__13_10_20.png" alt="logo-body">
+    <div class="logo-letter" id="dial-1">
+      <img src="./logo-parts/dom storrs_logos/O.png" alt="dial 1">
+    </div>
+    <div class="logo-letter" id="dial-2">
+      <img src="./logo-parts/dom storrs_logos/O2.png" alt="dial 2">
+    </div>
+  </div>
+</div>
+<div class="audio-player">
+  <audio autoplay muted id="track-1" src="./audio/bensound-creativeminds.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag
+  </audio>
+</div>
+
+<script>
+  const dialOne = document.getElementById('dial-1');
+  const dialTwo = document.getElementById('dial-2');
+  const logoContainer = document.getElementById('logo-container');
+  const trackOne = document.getElementById('track-1');
+
+  //page load animations
+  function onPageLoad() {
+    dialOne.style.transition = "all 1000ms ease";
+    dialOne.style.transform = "rotate(120deg)";
+    dialTwo.style.transition = "all 1500ms ease";
+    dialTwo.style.transform = "rotate(-120deg)";
+
+    setTimeout(function() {
+      dialOne.style.transition ="all 3000ms ease";
+      dialOne.style.transform = "rotate(-120deg)";
+    }, 1000);
+
+
+
+    setTimeout(function() {
+      dialTwo.style.transition = "all 1000ms ease";
+      dialTwo.style.transform = "rotate(120deg)";
+    }, 1000);
+
+    
+    setTimeout(function() {
+      dialTwo.style.transition = "all 1000ms ease";
+      dialTwo.style.transform = "rotate(0)";
+    }, 2000);
+  };
+
+
+
+  window.addEventListener('load', onPageLoad);
+
+
+  //dial functions and event listeners
+  function rotateDials(event) {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const x = Math.round((event.clientX / width) * 120);
+    const y = Math.round((event.clientY / height) * 100);
+
+
+    if(x < 60) {
+      dialOne.style.transition = "all 0s linear";
+      dialOne.style.transform = `rotate(${-120 + (x*2)}deg)`;
+    } else { 
+      dialOne.style.transform = "rotate(0deg)";
+    }
+
+    if(x > 60) {
+      dialTwo.style.transition = "all 0s linear";
+      dialTwo.style.transform = `rotate(${-120 + (x*2)}deg)`;
+    } else {
+      dialTwo.style.transform = "rotate(0deg)";
+    }
+  };
+
+  setTimeout( function() {
+    document.addEventListener('mousemove', rotateDials);
+    }, 2000);
+
+  /*  
+  //play music
+  function playMusic(event) {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const x = Math.round((event.clientX / width) * 120);
+    const y = Math.round((event.clientY / height) * 100);
+
+    if(y >=2 && y <= 20 && x > 30 && x <= 60) {
+      trackOne.muted = false; 
+      trackOne.play();
+      trackOne.volume = ((x - 30) * (0.1/3));
+    } else if(y >=2 && y <= 20 && x >= 60 && x < 90) {
+      trackOne.muted = false; 
+      trackOne.play();
+      trackOne.volume = 1 - ((x - 60) * 0.1/3);
+    } else {
+      trackOne.muted = true;
+      trackOne.pause();
+    }
+
+  }
+
+  document.addEventListener('mousemove', playMusic);
+
+  */
+</script>

@@ -1,0 +1,104 @@
+//bootstrap sass components
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "./helpers/variables";
+@import "./helpers/placeholders";
+
+@include media-breakpoint-up(md) {
+  body {
+    #logo {
+      #branding {
+        text-align: left;
+        a {
+          margin: 3rem 0 1rem 0;
+          text-decoration: none;
+          color: black;
+          @include font-size(3rem);
+          span {
+            padding-right: 10px;
+            font-weight: bolder;
+          }
+          img {
+            width: 150px;
+            height: auto;
+            padding-bottom: 10px;
+          }
+        }
+      }
+  
+      #slogan {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-end;
+        text-align: right;
+        @include font-size(1.4rem);
+      }
+    } 
+    main {
+      margin: 0 70px 100px 70px;
+      #welcome-slides {
+        margin: 4rem 0 5rem 0;
+        height: 60%;
+      }
+      .expert-entry {
+        .profile {
+          margin-bottom: 2rem;
+          h2 {
+            padding-left: 1rem;
+            font-family: $logo-font;
+            font-variant: small-caps;
+            @include font-size(2.5rem);
+            margin: 0 auto;
+            text-align: left;
+          }
+          img {
+            width: 100%;
+            height: auto;
+            padding: 1rem;
+          }
+          p {
+            letter-spacing: 1.3px;
+            font-size: 1.2rem;
+            margin: 1rem 2rem 1rem 1rem;
+          }
+        }
+      }
+      .price-list {
+        @include font-size(1.5rem);
+        font-weight: 700;
+        li {
+          background-color: transparent;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          .row {
+            width: 100%;
+            .item {
+              color: black;
+              display: flex;
+              justify-content: flex-start;
+              text-align: justify;
+            }
+            .price {
+              color: $base-red;
+              display: flex;
+              justify-content: flex-end;
+              text-align: right;
+            }
+            .more-info {
+              display: flex;
+              justify-content: start;
+              flex-wrap: nowrap;
+              padding-top: 10px;
+              font-style: italic;
+              text-align: justify;
+              @include font-size(1.3rem);
+            }
+          }
+        }
+      }
+    } 
+  }
+}

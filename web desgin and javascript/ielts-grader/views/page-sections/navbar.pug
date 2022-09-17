@@ -1,0 +1,32 @@
+include ./logo.pug
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+    span(class="navbar-toggler-icon")
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a id="what-we-offer-link" class="nav-link" href="#what-we-offer">What We Offer <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a id="our-prices-link" class="nav-link" href="#our-prices">Our Fees</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/get-started">Get Started</a>
+      </li>
+      <li class="nav-item">
+        <a id="contact-us-link" class="nav-link" href="#contact-us">Contact Us</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/" id="navbarDropdownAboutUs" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> About Us
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownAboutUs">
+          <a class="dropdown-item" href="/about-us">Our Experts</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/faqs">FAQs</a>
+        </div>
+      </li>
+    </ul>
+    a(id="log-in-btn" href="/auth" type="button" class="btn") #{loginButton}
+  </div>
+</nav>

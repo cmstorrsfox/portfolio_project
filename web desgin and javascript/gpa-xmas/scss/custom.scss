@@ -1,0 +1,134 @@
+@import "./helpers/variables";
+@import "../node_modules/rfs/scss";
+
+body {
+  background-image: url("../background-images/main.jpg");
+  background-size: cover;
+  padding-bottom: 30px;
+  .intro {
+    text-align: center;
+    font-family: $post-font;
+    color: green;
+    text-shadow: 1px 1px red;
+    @include font-size(5rem);
+    font-weight: bold;
+    margin: 1rem 0;
+  }
+  .button {
+    width: 15%;
+    margin: 0 auto 20px auto;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: $post-font;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.288);
+    border-radius: 9px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+  }
+  display: grid;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  font-family: $main-font;
+  .container {
+    margin: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(475px, 1fr));
+    grid-template-rows: repeat(3, minmax(475px, 1fr));
+    grid-auto-rows: minmax(475px, 1fr);
+    grid-auto-flow: row;
+    grid-column-gap: 12px;
+    grid-row-gap: 8px;
+    .post {
+      position: relative;
+      padding: 0.5rem;
+      border: 1px solid white;
+      border-radius: 4px;
+      text-align: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      word-wrap: break-word;
+      &::before {
+        content: "";
+        background-color: white;
+        filter: opacity(0.5);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+      }
+      .text-container {
+        position: relative;
+        @include font-size(2rem)
+      }
+    }
+  }
+  .preview {
+    position: relative;
+    width: 500px;
+    height: 675px;
+    margin: 2rem auto;
+    @include font-size(2rem);
+    padding: 0.5rem;
+    border: 1px solid black;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &::before {
+      content: "";
+      background-color: white;
+      filter: opacity(0.5);
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+    }
+    .text-container {
+      position: relative;
+      word-wrap: break-word;
+    }
+  }
+  .submit-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    form {
+      font-family: $main-font;
+      @include font-size(1.4rem);
+      font-weight: bold;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+      & > * {
+        margin: 10px;
+      }
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: justify;
+        border-bottom: 1px solid black;
+        margin: 20px 40px;
+        &:last-child {
+          border-bottom: none;
+        }
+        & > * {
+          margin-top: 5px;
+        }
+        input, select, option, button, label {
+          font-size: 1rem;
+          font-family: $main-font;
+          text-align: justify;
+        }
+        button {
+          font-weight: bold;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+include ../mixins/mixins
+
+div(id="welcome-slides" class="carousel slide" data-ride="carousel" data-interval="7000")
+    div(class="carousel-inner")
+        div(id="carousel-1" class="carousel-item active")
+            +jumbo-content('Find out your IELTS score', 'Complete a practice writing test online and get a guiding score from one of our experts', 'Get Started', '/get-started')
+        div(id="carousel-2" class="carousel-item")
+            +jumbo-content('Learn about our Experts', 'Find out more about our experts and their experience', 'Our Experts', '/about-us')
+        div(id="carousel-3" class="carousel-item")
+            +jumbo-content('Our Services', 'Click below or scroll down to find out more about the products and services we offer', 'Our Services', '#what-we-offer')
+    a(class="carousel-control-prev slide-btn" href="#welcome-slides" role="button" data-slide="prev")
+        span(class="carousel-control-prev-icon" aria-hidden="true")
+        span(class="sr-only") Previous
+    a(class="carousel-control-next slide-btn" href="#welcome-slides" role="button" data-slide="next")
+        span(class="carousel-control-next-icon" aria-hidden="true")
+        span(class="sr-only") Next

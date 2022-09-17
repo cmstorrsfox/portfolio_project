@@ -1,0 +1,11 @@
+extends template.pug
+
+block content
+  div(class="submission-info")
+    h3 Here is your submission
+    div(class="row" id="title-row")
+      p #{submission[0].title}
+    div(class="row" id="content-row")
+      p #{submission[0].content}
+    div(class="row" id="name-row")
+      p #{submission[0].name}

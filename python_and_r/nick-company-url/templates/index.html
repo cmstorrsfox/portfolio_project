@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h1>This is Nick's company app</h1>
+  <p>Process 300 companies per user</p>
+  <div id="cockroach-holder">
+    <audio id="audio-play">
+      <source src="{{ url_for('static', filename='cucaracha.mp3') }}" type='audio/mpeg' />
+    </audio>
+    <img id="cockroach" src="{{ url_for('static', filename='cockroach.png') }}" alt="There should be a cockroach here" width=300px height=auto />
+  </div>
+  <p>Upload the file you want to split</p>
+  <form method="post" enctype="multipart/form-data" id="splitter" action="/split">
+    <input type="file" name="file" id="split_file_uploader" accept=".csv" />
+    <button id="split">Split!</button> 
+  </form>
+  <p>Upload the files (one-by-one) you want the data for</p>
+  <form method="post" enctype="multipart/form-data" id="form"> 
+    <label for="file_upload"></label>
+    <input type="file" name="file" id="file_upload" accept=".csv" />
+    <select name="user" id="user-select">
+      {% for i in range(1,21) %}
+      <option value="user{{i}}">User {{i}}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Upload" />
+  </form>
+  <p>Click to download</p>
+  <form method="post" enctype="multipart/form-data" id="form-download" action="/download">
+    <input type="submit" value="Download" id="download" />
+    <button id="reset">Reset</button>
+  </form>
+  <div id="uploaded-files">
+    <h3 id="upload-head">Uploaded Files:</h3>
+    <ul id="listed-files">
+      {% for file in file_list %}
+        {% if file.endswith('.csv') %}
+          <li class="uploaded-file">{{file}}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  <script src="{{ url_for('static', filename='src/script.js') }}"></script>
+{% endblock %}

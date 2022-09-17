@@ -1,0 +1,138 @@
+---
+title: "Country Data (Joining practice)"
+output: html_notebook
+---
+
+#### Import libraries needed for processing data
+```{r}
+library("dplyr")
+library("readr")
+library("ggplot2")
+```
+
+
+#### Loading csv files and combining 3 years into one dataframe
+
+```{r}
+data_2017 <- read_csv("BACI_HS17_Y2017_V202102.csv")
+data_2018 <- read_csv("BACI_HS17_Y2018_V202102.csv")
+data_2019 <- read_csv("BACI_HS17_Y2019_V202102.csv")
+
+
+data_17_19 <- data_2017 %>%
+  bind_rows(data_2018) %>%
+  bind_rows(data_2019)
+
+```
+
+#### renaming columns to make it more user-friendly
+```{r}
+data_17_19 <- data_17_19 %>%
+  rename(
+    year = t, product_category = k, exporter = i, importer = j, value_of_trade_flow = v, quantity = q
+    ) %>%
+  mutate(product_category = as.numeric(product_category))
+
+head(data_17_19)
+```
+
+#### importing country data
+```{r}
+country_codes <- read_csv("country_codes_V202102.csv") %>%
+  select(country_code, iso_3digit_alpha)
+
+head(country_codes)
+
+
+```
+#### importing product codes
+```{r}
+product_codes <- read_csv("product_codes_HS17_V202102.csv")
+
+head(product_codes)
+```
+#### Joining country codes and product codes with all data
+```{r}
+data_17_19 <- data_17_19 %>%
+  left_join(country_codes, by = c("exporter" = "country_code")) %>%
+  left_join(country_codes, by = c("importer" = "country_code")) %>%
+  left_join(product_codes, by = c("product_category" = "code"))
+
+head(data_17_19)
+```
+#### delete unneeded columns
+```{r}
+data_17_19 <- data_17_19 %>%
+  select(-exporter, -importer, -product_category) %>%
+  rename(exporter = iso_3digit_alpha.x, importer = iso_3digit_alpha.y, product_category = description)
+
+head(data_17_19)
+```
+#### rearrange columns of dataset
+```{r}
+data_17_19 <- data_17_19 %>%
+  relocate(year, exporter, importer, product_category, value_of_trade_flow, quantity)
+
+head(data_17_19)
+  
+```
+#### get UK data (all countries)
+```{r}
+uk_exports_all <- data_17_19 %>%
+  filter(exporter == "GBR") %>%
+  group_by(importer) %>%
+  summarize(mean_value = mean(value_of_trade_flow)) %>%
+  arrange(desc(mean_value), by_group=TRUE)
+
+head(uk_exports_all)
+```
+
+
+#### plot UK data (top 10)
+```{r}
+uk_exports <- data_17_19 %>%
+  filter(exporter == "GBR") %>%
+  group_by(year, importer) %>%
+  summarize(mean_value = mean(value_of_trade_flow)) %>%
+  arrange(desc(mean_value), by_group=TRUE) %>%
+  top_n(mean_value, n=10) %>%
+  mutate(year = as.character(year))
+
+uk_exports
+```
+#### Plot UK Export Data
+```{r}
+uk_exp_viz <- ggplot(uk_exports, aes(x=reorder(importer, -mean_value), y=mean_value)) +
+                     geom_col(aes(fill=year), position="dodge2") +
+                     labs(title="Average Value of UK Exports 2017 - 2019 by Country", subtitle = "Data taken from CEPI BACI datasets - http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=37", x="Import Country", y="Average Value")
+
+uk_exp_viz
+```
+```{r}
+uk_exp_viz_2 <- ggplot(uk_exports, aes(x=year, y=importer)) +
+                       geom_raster(aes(fill=mean_value))
+
+uk_exp_viz_2
+```
+#### Plot country data maps
+```{r}
+new_country_codes <- read_csv("country_codes_V202102.csv")
+
+world_map <- map_data("world")
+world_map <- world_map %>%
+  left_join(new_country_codes, by = c("region" = "country_name_abbreviation")) %>%
+  left_join(uk_exports_all, by = c("iso_3digit_alpha" = "importer"))
+
+head(world_map)
+
+map_plot <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill=mean_value), colour = "white") +
+  labs(title= "Mean UK Export values 2017 - 2019 by country", subtitle="Data taken from CEPI BACI datasets - http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=37", x="", y="") +
+  theme(axis.text.x = element_blank(), axis.text.y = element_blank(), axis.ticks.x = element_blank(), axis.ticks.y = element_blank()) +
+  scale_fill_gradient(low = "blue", high = "red", na.value = "lightgrey")
+
+map_plot
+```
+
+
+

@@ -1,0 +1,32 @@
+%section-jumbo {
+  padding: 0 0 3 0;
+  margin-bottom: 3rem;
+  border-start-start-radius: 5px;
+  border-end-end-radius: 5px;
+  background-color: $base-yellow;
+}
+
+%section-header {
+  background-color: $base-darkest-blue;
+  color: white;
+  text-shadow: 1.5px 1.5px 2px $base-red; 
+  font-family: "Heebo", sans-serif;
+  font-variant: small-caps;
+  font-weight: 500;
+  @include font-size(3rem);
+  border-radius: 0;
+  margin: 0;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+%card {
+  margin: 20px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  border-radius: 7px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}

@@ -1,0 +1,63 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  text-align: center;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  margin-top: 2rem;
+  width: 33%;
+  border: 2px solid blue;
+  border-radius: 0.4rem;
+}
+
+#lists-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.word-list-container {
+  margin: 0.8rem;
+  width: calc(100%/3);
+  border: 3px solid blue;
+  border-radius: 0.6rem;
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.entry-card {
+  border: 2px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1rem;
+  border-radius: 0.6rem;
+  background-color: yellow;
+}
+
+.entry-card > div > p {
+  padding: 0;
+  margin: 0.2rem;
+  color: blue;
+}
+
+.type {
+  font-weight: 600;
+}
+
+.search-word {
+  color: red;
+  font-weight: 700;
+}

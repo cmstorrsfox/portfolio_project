@@ -1,0 +1,45 @@
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding: 0;
+  margin: 20px auto;
+}
+
+.logo-body {
+  width: calc(62.5rem / 6);
+  position: relative;
+  height: auto;
+  margin: 0 auto;
+}
+
+.logo-letter {
+  width: calc(9.5rem / 6);
+  height: calc(9.5rem / 6);
+  position: absolute;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+#dial-1 {
+  top: 0px;
+  left: calc(8rem / 6);
+  transform: rotate(-120deg);
+}
+
+#dial-2 {
+  top: calc(9.875rem / 6);
+  left: calc(28.625rem / 6);
+}

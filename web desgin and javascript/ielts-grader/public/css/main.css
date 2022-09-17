@@ -1,0 +1,337 @@
+body main .jumbotron {
+  padding: 0 0 3 0;
+  margin-bottom: 3rem;
+  border-start-start-radius: 5px;
+  border-end-end-radius: 5px;
+  background-color: #fdfae8;
+}
+
+body main .jumbotron .section-header {
+  background-color: #24305E;
+  color: white;
+  text-shadow: 1.5px 1.5px 2px #a00707;
+  font-family: "Heebo", sans-serif;
+  font-variant: small-caps;
+  font-weight: 500;
+  font-size: 3rem;
+  border-radius: 0;
+  margin: 0;
+  padding: 1rem 0;
+  text-align: center;
+}
+@media (max-width: 1200px) {
+  body main .jumbotron .section-header {
+    font-size: calc(1.425rem + 2.1vw);
+  }
+}
+
+body main .card {
+  margin: 20px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  border-radius: 7px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+html {
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin-bottom: 50px !important;
+}
+body #logo {
+  font-family: "Source Sans Pro", sans-serif;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+body #logo #branding {
+  text-align: center;
+  font-variant: small-caps;
+}
+body #logo #branding a {
+  margin: 3rem 0 1rem 0;
+  text-decoration: none;
+  color: black;
+  font-size: 5rem;
+}
+@media (max-width: 1200px) {
+  body #logo #branding a {
+    font-size: calc(1.625rem + 4.5vw);
+  }
+}
+body #logo #branding a span {
+  padding-right: 10px;
+  font-weight: bolder;
+}
+body #logo #branding a img {
+  width: 120px;
+  height: auto;
+  padding-bottom: 10px;
+}
+body #logo #slogan {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.4rem;
+  font-family: "Heebo", sans-serif;
+  font-weight: 500;
+}
+@media (max-width: 1200px) {
+  body #logo #slogan {
+    font-size: calc(1.265rem + 0.18vw);
+  }
+}
+body .navbar {
+  background-color: #24305E;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+body .navbar a {
+  font-weight: 600;
+  color: white;
+}
+body .navbar .btn {
+  background-color: #a00707;
+  color: #fdfae8;
+}
+body .navbar .dropdown-item {
+  color: #a00707;
+}
+body main {
+  font-family: "Heebo", sans-serif;
+  font-weight: 400;
+}
+body main .btn {
+  background-color: #a00707;
+  color: #fdfae8;
+  font-weight: 500;
+  margin: 0.8rem;
+}
+body main #welcome-slides {
+  margin: 3rem 0 3rem 0;
+  height: 50%;
+}
+body main #welcome-slides .carousel-inner {
+  height: 100%;
+}
+body main #welcome-slides .carousel-inner .carousel-item {
+  text-align: center;
+  padding: 1rem;
+  height: 100%;
+  padding: 0 15% 0 15%;
+}
+body main #welcome-slides .carousel-inner .carousel-item .slide-content {
+  position: relative;
+  width: 100%;
+  margin: 13% auto;
+}
+body main #welcome-slides .carousel-inner .carousel-item .slide-content .jumbo-header {
+  font-size: 3rem;
+}
+@media (max-width: 1200px) {
+  body main #welcome-slides .carousel-inner .carousel-item .slide-content .jumbo-header {
+    font-size: calc(1.425rem + 2.1vw);
+  }
+}
+body main #welcome-slides .carousel-inner .carousel-item .slide-content .jumbo-body {
+  font-size: 1.4rem;
+}
+@media (max-width: 1200px) {
+  body main #welcome-slides .carousel-inner .carousel-item .slide-content .jumbo-body {
+    font-size: calc(1.265rem + 0.18vw);
+  }
+}
+body main #welcome-slides .carousel-inner #carousel-1 {
+  position: relative;
+}
+body main #welcome-slides .carousel-inner #carousel-1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/carousel/study_book.jpg);
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(80%);
+  opacity: 0.3;
+}
+body main #welcome-slides .carousel-inner #carousel-2 {
+  position: relative;
+}
+body main #welcome-slides .carousel-inner #carousel-2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/carousel/business_signing.jpg);
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(80%);
+  opacity: 0.3;
+}
+body main #welcome-slides .carousel-inner #carousel-2 .slide-content {
+  position: relative;
+  width: 100%;
+  margin: 12.5% auto;
+}
+body main #welcome-slides .carousel-inner #carousel-3 {
+  position: relative;
+}
+body main #welcome-slides .carousel-inner #carousel-3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/carousel/online_study.jpg);
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(80%);
+  opacity: 0.3;
+}
+body main #welcome-slides .carousel-inner #carousel-3 .slide-content {
+  position: relative;
+  width: 100%;
+  margin: 12.5% auto;
+}
+body main .price-list {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+@media (max-width: 1200px) {
+  body main .price-list {
+    font-size: calc(1.275rem + 0.3vw);
+  }
+}
+body main .price-list li {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem 1.2rem;
+}
+body main .price-list li .row {
+  width: 100%;
+}
+body main .price-list li .row .item {
+  color: black;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+body main .price-list li .row .price {
+  color: #a00707;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+body main .price-list li .row .more-info {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap-reverse;
+  padding-top: 10px;
+  font-style: italic;
+  font-size: 1.3rem;
+}
+@media (max-width: 1200px) {
+  body main .price-list li .row .more-info {
+    font-size: calc(1.255rem + 0.06vw);
+  }
+}
+body main #task-submit-form {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+body main #task-submit-form input::placeholder {
+  text-align: start;
+}
+body main #task-submit-form textarea {
+  margin: 2rem 0;
+}
+body main #task-submit-form .row {
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+}
+body main #task-submit-form p {
+  text-align: center;
+  margin-top: 2rem;
+}
+body main #task-submit-form label {
+  margin-top: 2rem;
+}
+body main #task-submit-form #writing-task-div, body main #task-submit-form #speaking-task-div, body main #task-submit-form #step-3 {
+  display: none;
+}
+body main #task-submit-form .submit-btn {
+  margin: 0 auto 4rem auto;
+}
+body main .expert-entry {
+  width: 100%;
+}
+body main .expert-entry .profile div {
+  width: 100%;
+}
+body main .expert-entry .profile h2 {
+  padding-left: 1rem;
+  font-family: "Source Sans Pro", sans-serif;
+  font-variant: small-caps;
+  font-size: 2.5rem;
+  margin: 0 auto;
+  text-align: center;
+}
+@media (max-width: 1200px) {
+  body main .expert-entry .profile h2 {
+    font-size: calc(1.375rem + 1.5vw);
+  }
+}
+body main .expert-entry .profile img {
+  width: 100%;
+  height: auto;
+  margin: 0.5rem 0.5rem 0.5rem 1rem;
+}
+body main .expert-entry .profile p {
+  text-align: justify;
+  margin: 1rem 2rem 1rem 3rem;
+}
+body main .expert-entry .profile hr {
+  width: 80%;
+  margin-top: 3rem;
+}
+body main .submission-info h4 {
+  color: dark;
+}
+
+footer #footer {
+  margin-bottom: 0 !important;
+  font-family: "Source Sans Pro", sans-serif;
+  font-variant: small-caps;
+  color: white;
+  height: 50px;
+}
+footer #footer span {
+  padding-right: 0.5rem;
+}
+footer #footer img {
+  padding-bottom: 4px;
+}
+
+#submissionForm {
+  width: 87.5%;
+}
+
+/*# sourceMappingURL=main.css.map */
