@@ -1,6 +1,6 @@
 amqp==5.1.0
 billiard==3.6.4.0
-certifi==2021.10.8
+certifi==2022.12.7
 charset-normalizer==2.0.12
 click==8.0.4
 click-didyoumean==0.3.0
