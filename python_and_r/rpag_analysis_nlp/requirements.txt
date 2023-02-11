@@ -4,7 +4,7 @@ colorama==0.4.4
 Cython==0.29.23
 decorator==5.1.0
 gensim==3.8.3
-ipython==7.28.0
+ipython==8.10.0
 jedi==0.18.0
 joblib==1.1.0
 matplotlib-inline==0.1.3
